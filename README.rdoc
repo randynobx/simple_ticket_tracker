@@ -5,3 +5,4 @@ Written by Randy Nance
 == Application details
 
 * Ruby version: Version 2.20
+* Rails version: 4.2.0
