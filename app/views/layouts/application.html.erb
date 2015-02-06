@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SimpleTicketTracker</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<strong>Super Simple Ticket Tracker</strong> | <%= link_to 'Dashboard', root_path %> | <%= link_to 'Accounts', accounts_path %> | <%= link_to 'Services', services_path %> | <%= link_to 'Records', records_path %> | <%= link_to 'Tickets', tickets_path %> | Reports
+
+<hr>
+
+<%= yield %>
+
+<hr>
+Super Simple Ticket Tracker by Randy Nance<br>
+MIT License &copy; 2015. Get the source <a href="https://github.com/randynobx/simple_ticket_tracker">on Github</a>
+
+</body>
+</html>

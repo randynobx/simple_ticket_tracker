@@ -1,0 +1,39 @@
+<%= form_for @ticket do |f| %>
+
+<% if @ticket.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@ticket.errors.count, "error") %> prohibited
+        this ticket from being saved:
+      </h2>
+      <ul>
+        <% @ticket.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<!-- Set ID to next ID (going by count) if id field is blank on load -->
+<% if !@ticket.id.present? %>
+  <% @ticket.id = Ticket.last.id + 1 %>
+<%end%>
+
+<table>
+    <tr><td><%= f.label :id%></td><td><%= f.text_field :id %></td></tr>
+    <tr><td><%= f.label :date%></td><td><%= f.date_select :date %></td></tr>
+    <tr><td><%= f.label :account_id%></td><td><%= f.collection_select(:account_id, Account.all.where(category: 'Client'), :id, :name, :prompt => "Select Account") %></td></tr>
+    <tr><td><%= f.label :service_id%></td><td><%= f.collection_select(:service_id, Service.all, :id, :category, :prompt => "Select Service") %></td></tr>
+    <tr><td><%= f.label :materialslist%></td><td><%= f.text_area :materialslist %></td></tr>
+    <tr><td><%= f.label :materialscost%></td><td><%= f.text_field :materialscost %></td></tr>
+    <tr><td><%= f.label :labor%></td><td><%= f.text_field :labor %></td></tr>
+    <tr><td><%= f.label :total%></td><td><%= f.text_field :total %></td></tr>
+    <tr><td><%= f.label :closed%></td><td><%= f.select(:closed, options_for_select([['Open', 'false'], ['Closed', 'true']], selected = @ticket.closed.to_s)) %></td></tr>
+    <tr><td><%= f.label :worklog%></td><td><%= f.text_area :worklog %></td></tr>
+</table>
+
+<p>
+    <%= f.submit %>
+</p>
+
+<% end %>

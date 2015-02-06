@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 
+  date: 2015-02-03
+  account_id: 
+  ticket_id: 
+  notes: MyText
+  settled: MyString
+  income: 9.99
+  expense: 9.99
+  balance: 9.99
+
+two:
+  id: 
+  date: 2015-02-03
+  account_id: 
+  ticket_id: 
+  notes: MyText
+  settled: MyString
+  income: 9.99
+  expense: 9.99
+  balance: 9.99

@@ -1,0 +1,31 @@
+<h1>Services Index</h1>
+
+<%= link_to 'New service', new_service_path %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Category</th>
+    <th>Price</th>
+    <th>Rate</th>
+    <th>Tickets</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Destroy</th>
+  </tr>
+
+  <% @services.each do |service| %>
+    <tr>
+      <td><%= service.id %></td>
+      <td><%= service.category %></td>
+      <td><%= number_to_currency(service.price) %></td>
+      <td><%= service.rate %></td>
+      <td><%= link_to Ticket.where(service_id: service.id).count, tickets_path %></td>
+      <td><%= link_to 'Show', service_path(service) %></td>
+      <td><%= link_to 'Edit', edit_service_path(service) %></td>
+      <td><%= link_to 'Destroy', service_path(service),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

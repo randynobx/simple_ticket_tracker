@@ -1,0 +1,44 @@
+<h1>Tickets Index</h1>
+
+<%= link_to 'New ticket', new_ticket_path %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Date</th>
+    <th>Account</th>
+    <th>Service</th>
+    <!--<th>Materials</th>-->
+    <th>Materials Cost</th>
+    <th>Labor</th>
+    <th>Total</th>
+    <th>Closed</th>
+    <!--<th>Worklog</th>-->
+    <th>Records</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
+  <% @tickets.each do |ticket| %>
+    <tr>
+      <td><%= ticket.id %></td>
+      <td><%= ticket.date %></td>
+      <td><%= link_to Account.find(ticket.account_id).name, accounts_path(Account.find(ticket.account_id)) %></td>
+      <td><%= link_to Service.find(ticket.service_id).category, services_path(Service.find(ticket.service_id)) %></td>
+      <!--<td><%= ticket.materialslist %></td>-->
+      <td><%= number_to_currency(ticket.materialscost) %></td>
+      <td><%= number_to_currency(ticket.labor) %></td>
+      <td><%= number_to_currency(ticket.total) %></td>
+      <td><%= ticket.closed %></td>
+      <!--<td><%= ticket.worklog %></td>-->
+      <td><%= Record.where(ticket_id: ticket.id).count %></td>
+      <td><%= link_to 'Show', ticket_path(ticket) %></td>
+      <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
+      <td><%= link_to 'Destroy', ticket_path(ticket),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    </tr>
+  <% end %>
+</table>

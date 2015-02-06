@@ -1,0 +1,11 @@
+<h1>Show Service</h1>
+
+<table>
+    <tr><td><strong>id</strong></td><td><%= @service.id %></td></tr>
+    <tr><td><strong>category</strong></td><td><%= @service.category %></td></tr>
+    <tr><td><strong>price</strong></td><td><%= number_to_currency(@service.price) %></td></tr>
+    <tr><td><strong>rate</strong></td><td><%= @service.rate %></td></tr>
+    <tr><td><strong>tickets</strong></td><td><%= link_to Ticket.where(service_id: @service.id).count, tickets_path %></td></tr>
+</table>
+
+<%= link_to 'Back to services', services_path %> | <%= link_to 'Edit', edit_service_path(@service) %> | <%= link_to 'Destroy', service_path(@service), method: :delete, data: { confirm: 'Are you sure?' } %>

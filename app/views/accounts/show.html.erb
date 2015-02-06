@@ -1,0 +1,16 @@
+<h1>Show Account</h1>
+
+<table>
+    <tr><td><strong>id</strong></td><td><%= @account.id %></td></tr>
+    <tr><td><strong>category</strong></td><td><%= @account.category %></td></tr>
+    <tr><td><strong>name</strong></td><td><%= @account.name %></td></tr>
+    <tr><td><strong>business</strong></td><td><%= @account.business %></td></tr>
+    <tr><td><strong>phone</strong></td><td><%= @account.phone %></td></tr>
+    <tr><td><strong>email</strong></td><td><%= @account.email %></td></tr>
+    <tr><td><strong>address</strong></td><td><%= @account.address %><br><%= @account.city + ", " + @account.state.upcase + " " + @account.zip unless @account.city.nil? || @account.state.nil? || @account.zip.nil? %></td></tr>
+    <tr><td><strong>notes</strong></td><td><%= @account.notes %></td></tr>
+    <tr><td><strong>tickets</strong></td><td><%= link_to Ticket.where(account_id: @account.id).count, tickets_path %></td></tr>
+    <tr><td><strong>income</strong></td><td><%= number_to_currency(Ticket.where(account_id: @account.id).sum(:labor)) %></td></tr>
+</table>
+
+<%= link_to 'Back to accounts', accounts_path %> | <%= link_to 'Edit', edit_account_path(@account) %> | <%= link_to 'Destroy', account_path(@account), method: :delete, data: { confirm: 'Are you sure?' } %>

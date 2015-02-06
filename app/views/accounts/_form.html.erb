@@ -1,0 +1,40 @@
+<%= form_for @account do |f| %>
+
+<% if @account.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@account.errors.count, "error") %> prohibited
+        this account from being saved:
+      </h2>
+      <ul>
+        <% @account.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<!-- Set ID to next ID (going by count) if id field is blank on load -->
+<% if !@account.id.present? %>
+  <% @account.id = Account.last.id + 1 %>
+<%end%>
+
+<table>
+    <tr><td><%= f.label :id%></td><td><%= f.text_field :id %></td></tr>
+    <tr><td><%= f.label :category%></td><td><%= f.select :category, options_for_select([['Client', 'Client'], ['Vendor', 'Vendor']]) %></td></tr>
+    <tr><td><%= f.label :name%></td><td><%= f.text_field :name%></td></tr>
+    <tr><td><%= f.label :business%></td><td><%= f.text_field :business%></td></tr>
+    <tr><td><%= f.label :phone%></td><td><%= telephone_field(:account, :phone) %></tr>
+    <tr><td><%= f.label :email%></td><td><%= email_field(:account, :email) %></td></tr>
+    <tr><td><%= f.label :address%></td><td><%= f.text_field :address%></td></tr>
+    <tr><td><%= f.label :city%></td><td><%= f.text_field :city%></td></tr>
+    <tr><td><%= f.label :state%></td><td><%= f.text_field :state%></td></tr>
+    <tr><td><%= f.label :zip%></td><td><%= f.text_field :zip%></td></tr>
+    <tr><td><%= f.label :notes%></td><td><%= f.text_area :notes%></td></tr>
+</table>
+
+<p>
+    <%= f.submit %>
+</p>
+
+<% end %>

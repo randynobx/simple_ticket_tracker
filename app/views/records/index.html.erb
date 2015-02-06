@@ -1,0 +1,39 @@
+<h1>Listing Records</h1>
+
+<%= link_to 'New record', new_record_path %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Date</th>
+    <th>Account</th>
+    <th>Ticket</th>
+    <th>Income</th>
+    <th>Expense</th>
+    <th>Total</th>
+    <th>Settled</th>
+    <th>Notes</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
+  <% @records.each do |record| %>
+    <tr>
+      <td><%= record.id %></td>
+      <td><%= record.date %></td>
+      <td><%= link_to Account.find(record.account_id).name, accounts_path(Account.find(record.account_id)) %></td>
+      <td><%= link_to record.ticket_id, tickets_path(record.ticket_id) %></td>
+      <td><%= number_to_currency(record.income) %></td>
+      <td><%= number_to_currency(record.expense) %></td>
+      <td><%= number_to_currency(record.total) %></td>
+      <td><%= record.settled %></td>
+      <td><%= record.notes %></td>
+      <td><%= link_to 'Show', record_path(record) %></td>
+      <td><%= link_to 'Edit', edit_record_path(record) %></td>
+      <td><%= link_to 'Destroy', record_path(record),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

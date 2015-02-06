@@ -1,0 +1,39 @@
+<h1>Accounts Index</h1>
+
+<%= link_to 'New account', new_account_path %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Category</th>
+    <th>Name</th>
+    <th>Business</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>Notes</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Destroy</th>
+  </tr>
+
+  <% @accounts.each do |account| %>
+    <tr>
+      <td><%= account.id %></td>
+      <td><%= account.category %></td>
+      <td><%= account.name %></td>
+      <td><%= account.business %></td>
+      <td><%= account.phone %></td>
+      <td><%= account.email %></td>
+      <td><%= account.address %></td>
+      <td><%= account.city %></td>
+      <td><%= account.notes %></td>
+      <td><%= link_to 'Show', account_path(account) %></td>
+      <td><%= link_to 'Edit', edit_account_path(account) %></td>
+      <td><%= link_to 'Destroy', account_path(account),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

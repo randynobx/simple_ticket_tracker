@@ -1,4 +1,4 @@
-== SIMPLE TICKET TRACKER README
+== Simple Ticket Tracker
 
 Written by Randy Nance
 

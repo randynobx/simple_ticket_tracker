@@ -1,0 +1,15 @@
+<h1>Show Record</h1>
+
+<table>
+    <tr><td><strong>id</strong></td><td><%= @record.id %></td></tr>
+    <tr><td><strong>date</strong></td><td><%= @record.date %></td></tr>
+    <tr><td><strong>account</strong></td><td><%= link_to @account.name, account_path(@account) %></td></tr>
+    <tr><td><strong>ticket</strong></td><td><%= link_to @record.ticket_id, ticket_path(@record.ticket_id) %></td></tr>
+    <tr><td><strong>income</strong></td><td><%= number_to_currency(@record.income) %></td></tr>
+    <tr><td><strong>expense</strong></td><td><%= number_to_currency(@record.expense) %></td></tr>
+    <tr><td><strong>total</strong></td><td><%= number_to_currency(@record.total) %></td></tr>
+    <tr><td><strong>settled</strong></td><td><%= @record.settled %></td></tr>
+    <tr><td><strong>notes</strong></td><td><%= @record.notes %></td></tr>
+</table>
+
+<%= link_to 'Back to records', records_path %> | <%= link_to 'Edit', edit_record_path(@record) %> | <%= link_to 'Destroy', record_path(@record), method: :delete, data: { confirm: 'Are you sure?' } %>
