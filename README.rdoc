@@ -5,24 +5,3 @@ Written by Randy Nance
 == Application details
 
 * Ruby version: Version 2.20
-
-==Planned Functionality
-
-General
-* Add Secure Authentication
-
-Reports
-* Implement reports functionality
-* Standard reports: Client, Monthly, Yearly, Service
-* Ability to create custom report
-
-Dashboard
-* Setup Dashboard statistics
-
-Tickets
-* Implement filter/search capability (Will need to update account view to direct to correct filter)
-
-
-== Design
-
-Overhaul of current default design is planned.
