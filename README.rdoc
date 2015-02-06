@@ -4,7 +4,7 @@ Written by Randy Nance
 
 == Application details
 
-* Ruby version: ruby 2.2.0p0 (2014-12-25 revision 49005)
+* Ruby version: Version 2.20
 
 ==Planned Functionality
 
@@ -20,8 +20,7 @@ Dashboard
 * Setup Dashboard statistics
 
 Tickets
-* Implement filter/search capability
- 	(Will need to update account view to direct to correct filter)
+* Implement filter/search capability (Will need to update account view to direct to correct filter)
 
 
 == Design
