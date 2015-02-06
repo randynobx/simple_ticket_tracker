@@ -6,25 +6,24 @@ Written by Randy Nance
 
 * Ruby version: ruby 2.2.0p0 (2014-12-25 revision 49005)
 
-==PLANNED FUNCTIONALITY
+==Planned Functionality
 
 General
- - Add Secure Authentication
+* Add Secure Authentication
 
 Reports
- - Implement reports functionality
- - Standard reports: Client, Monthly, Yearly, Service
- - Ability to create custom report
+* Implement reports functionality
+* Standard reports: Client, Monthly, Yearly, Service
+* Ability to create custom report
 
 Dashboard
- - Setup Dashboard statistics
+* Setup Dashboard statistics
 
 Tickets
- - Implement filter/search capability
+* Implement filter/search capability
  	(Will need to update account view to direct to correct filter)
 
--------------------------------------------------------------------------------
 
-DESIGN
+== Design
 
 Overhaul of current default design is planned.
