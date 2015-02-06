@@ -1,29 +1,30 @@
-== README
+== SIMPLE TICKET TRACKER README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Written by Randy Nance
 
-Things you may want to cover:
+== Application details
 
-* Ruby version
-ruby 2.2.0p0 (2014-12-25 revision 49005)
+* Ruby version: ruby 2.2.0p0 (2014-12-25 revision 49005)
 
-* System dependencies
+==PLANNED FUNCTIONALITY
 
-* Configuration
+General
+ - Add Secure Authentication
 
-* Database creation
+Reports
+ - Implement reports functionality
+ - Standard reports: Client, Monthly, Yearly, Service
+ - Ability to create custom report
 
-* Database initialization
+Dashboard
+ - Setup Dashboard statistics
 
-* How to run the test suite
+Tickets
+ - Implement filter/search capability
+ 	(Will need to update account view to direct to correct filter)
 
-* Services (job queues, cache servers, search engines, etc.)
+-------------------------------------------------------------------------------
 
-* Deployment instructions
+DESIGN
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Overhaul of current default design is planned.
