@@ -28,7 +28,7 @@
     <tr><td><%= f.label :materialscost%></td><td><%= f.text_field :materialscost %></td></tr>
     <tr><td><%= f.label :labor%></td><td><%= f.text_field :labor %></td></tr>
     <tr><td><%= f.label :total%></td><td><%= f.text_field :total %></td></tr>
-    <tr><td><%= f.label :closed%></td><td><%= f.select(:closed, options_for_select([['Open', 'false'], ['Closed', 'true']], selected = @ticket.closed.to_s)) %></td></tr>
+    <tr><td><%= f.label :status%></td><td><%= f.select(:closed, options_for_select([['Open', 'false'], ['Closed', 'true']], selected = @ticket.closed.to_s)) %></td></tr>
     <tr><td><%= f.label :worklog%></td><td><%= f.text_area :worklog %></td></tr>
 </table>
 

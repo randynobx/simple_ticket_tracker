@@ -12,8 +12,10 @@
 <div>
     <h3>Accounts</h3>
     <table>
-        <tr><td>Top Account (Tickets)</td><td><%= Account.find_by(id: Ticket.group(:account_id).count.max{|a, b| a.last <=> b.last}.first).name %></td></tr>
-        <tr><td>Top Account (Revenue)</td><td><%= Account.find_by(id: Record.group(:account_id).sum(:total).max.first).name %></td></tr>
+        <% @top_ticket = Account.find_by(id: Ticket.group(:account_id).count.max{|a, b| a.last <=> b.last}.first) %>
+        <% @top_revenue = Account.find_by(id: Record.group(:account_id).sum(:total).max.first) %>
+        <tr><td>Top Client (Tickets):</td><td><%= link_to @top_ticket.name, account_path(@top_ticket.id) %></td></tr>
+        <tr><td>Top Client (Revenue:</td><td><%= link_to @top_revenue.name, account_path(@top_revenue.id) %></td></tr>
     </table>
 </div>
 

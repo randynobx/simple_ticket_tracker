@@ -20,7 +20,7 @@
       <td><%= service.category %></td>
       <td><%= number_to_currency(service.price) %></td>
       <td><%= service.rate %></td>
-      <td><%= link_to Ticket.where(service_id: service.id).count, tickets_path %></td>
+      <td><%= link_to Ticket.where(service_id: service.id).count, tickets_path(:service_id => service.id) %></td>
       <td><%= link_to 'Show', service_path(service) %></td>
       <td><%= link_to 'Edit', edit_service_path(service) %></td>
       <td><%= link_to 'Destroy', service_path(service),

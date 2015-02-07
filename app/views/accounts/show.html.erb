@@ -9,7 +9,7 @@
     <tr><td><strong>email</strong></td><td><%= @account.email %></td></tr>
     <tr><td><strong>address</strong></td><td><%= @account.address %><br><%= @account.city + ", " + @account.state.upcase + " " + @account.zip unless @account.city.nil? || @account.state.nil? || @account.zip.nil? %></td></tr>
     <tr><td><strong>notes</strong></td><td><%= @account.notes %></td></tr>
-    <tr><td><strong>tickets</strong></td><td><%= link_to Ticket.where(account_id: @account.id).count, tickets_path %></td></tr>
+    <tr><td><strong>tickets</strong></td><td><%= link_to Ticket.where(account_id: @account.id).count, tickets_path(:account_id => @account.id) %></td></tr>
     <tr><td><strong>income</strong></td><td><%= number_to_currency(Ticket.where(account_id: @account.id).sum(:labor)) %></td></tr>
 </table>
 

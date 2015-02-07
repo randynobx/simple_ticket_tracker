@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   def index
-    @tickets = Ticket.all
+    @tickets = Ticket.where(params.permit(:account_id, :service_id))
   end
 
   def show
