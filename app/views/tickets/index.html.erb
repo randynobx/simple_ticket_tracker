@@ -23,8 +23,8 @@
     <tr>
       <td><%= ticket.id %></td>
       <td><%= ticket.date %></td>
-      <td><%= link_to Account.find(ticket.account_id).name, accounts_path(Account.find(ticket.account_id)) %></td>
-      <td><%= link_to Service.find(ticket.service_id).category, services_path(Service.find(ticket.service_id)) %></td>
+      <td><%= link_to Account.find(ticket.account_id).name, account_path(Account.find(ticket.account_id)) %></td>
+      <td><%= link_to Service.find(ticket.service_id).category, service_path(Service.find(ticket.service_id)) %></td>
       <!--<td><%= ticket.materialslist %></td>-->
       <td><%= number_to_currency(ticket.materialscost) %></td>
       <td><%= number_to_currency(ticket.labor) %></td>
