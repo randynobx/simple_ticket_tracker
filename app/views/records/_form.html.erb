@@ -27,7 +27,7 @@
         <tr><td><%= f.label :income%></td><td><%= f.text_field :income%></td></tr>
         <tr><td><%= f.label :expense%></td><td><%= f.text_field :expense%></td></tr>
         <tr><td><%= f.label :total%></td><td><%= f.text_field :total%></td></tr>
-        <tr><td><%= f.label :settled%></td><td><%= f.select :settled, options_for_select([['Settled', true], ['Pending', false]], selected = @record.settled.to_s) %></td></tr>
+        <tr><td><%= f.label :settled%></td><td><%= f.select :settled, options_for_select([['Pending', false], ['Settled', true]], selected = @record.settled.to_s) %></td></tr>
         <tr><td><%= f.label :notes%></td><td><%= f.text_area :notes%></td></tr>
     </table>
 

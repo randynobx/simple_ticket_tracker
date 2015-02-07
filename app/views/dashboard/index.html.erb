@@ -9,6 +9,14 @@
     </table>
 </div>
 
+<div>
+    <h3>Accounts</h3>
+    <table>
+        <tr><td>Top Account (Tickets)</td><td><%= Account.find_by(id: Ticket.group(:account_id).count.max{|a, b| a.last <=> b.last}.first).name %></td></tr>
+        <tr><td>Top Account (Revenue)</td><td><%= Account.find_by(id: Record.group(:account_id).sum(:total).max.first).name %></td></tr>
+    </table>
+</div>
+
 <hr>
 
 <div>
