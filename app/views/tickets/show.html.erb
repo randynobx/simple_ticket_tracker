@@ -13,7 +13,7 @@
     <tr><td><strong>worklog</strong></td><td><%= @ticket.worklog %></td></tr>
     <tr><td><strong>record id's</strong></td><td>
         <% if Record.where(ticket_id: @ticket.id).empty? %>
-          <%= link_to 'Add Record', new_record_path(ticket_id: @ticket.id) %>
+          <%= link_to 'Add Record', new_record_path(:ticket_id => @ticket.id) %>
         <% else %>
         <table>
             <tr>

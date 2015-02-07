@@ -32,7 +32,7 @@
       <td><%= number_to_currency(ticket.total) %></td>
       <td><%= ticket.closed %></td>
       <!--<td><%= ticket.worklog %></td>-->
-      <td><%= Record.where(ticket_id: ticket.id).count %></td>
+      <td><%= Record.where(ticket_id: ticket.id).count == 0 ? (link_to 'Add', new_record_path(:ticket_id => ticket.id)) : Record.where(ticket_id: ticket.id).count %></td>
       <td><%= link_to 'Show', ticket_path(ticket) %></td>
       <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
       <td><%= link_to 'Destroy', ticket_path(ticket),

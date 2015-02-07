@@ -9,7 +9,7 @@ class RecordsController < ApplicationController
   end
 
   def new
-    @record = Record.new
+    @record = Record.new(params.permit(:ticket_id))
   end
 
   def create
