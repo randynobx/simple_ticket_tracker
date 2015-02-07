@@ -17,7 +17,6 @@
     <th>Records</th>
     <th>Show</th>
     <th>Edit</th>
-    <th>Delete</th>
   </tr>
 
   <% @tickets.each do |ticket| %>
@@ -35,9 +34,6 @@
       <td><%= Record.where(ticket_id: ticket.id).count == 0 ? (link_to 'Add', new_record_path(:ticket_id => ticket.id)) : Record.where(ticket_id: ticket.id).count %></td>
       <td><%= link_to 'Show', ticket_path(ticket) %></td>
       <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
-      <td><%= link_to 'Destroy', ticket_path(ticket),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
     </tr>
     </tr>
   <% end %>

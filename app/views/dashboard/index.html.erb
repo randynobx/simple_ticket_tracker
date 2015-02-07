@@ -47,8 +47,8 @@
         <tr>
           <td><%= record.id %></td>
           <td><%= record.date %></td>
-          <td><%= link_to Account.find(record.account_id).name, accounts_path(Account.find(record.account_id)) %></td>
-          <td><%= link_to record.ticket_id, tickets_path(record.ticket_id) %></td>
+          <td><%= link_to Account.find(record.account_id).name, account_path(Account.find(record.account_id)) %></td>
+          <td><%= link_to record.ticket_id, ticket_path(record.ticket_id) %></td>
           <td><%= number_to_currency(record.income) %></td>
           <td><%= number_to_currency(record.expense) %></td>
           <td><%= number_to_currency(record.total) %></td>
@@ -84,8 +84,8 @@
         <tr>
           <td><%= ticket.id %></td>
           <td><%= ticket.date %></td>
-          <td><%= link_to Account.find(ticket.account_id).name, accounts_path(Account.find(ticket.account_id)) %></td>
-          <td><%= link_to Service.find(ticket.service_id).category, services_path(Service.find(ticket.service_id)) %></td>
+          <td><%= link_to Account.find(ticket.account_id).name, account_path(Account.find(ticket.account_id)) %></td>
+          <td><%= link_to Service.find(ticket.service_id).category, service_path(Service.find(ticket.service_id)) %></td>
           <td><%= number_to_currency(ticket.materialscost) %></td>
           <td><%= number_to_currency(ticket.labor) %></td>
           <td><%= number_to_currency(ticket.total) %></td>

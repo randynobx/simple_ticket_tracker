@@ -37,6 +37,9 @@ class AccountsController < ApplicationController
 
   def destroy
     @account = Account.find(params[:id])
+    Ticket.where(account_id: @account.id).each do |t|
+      t.destroy
+    end
     @account.destroy
 
     redirect_to accounts_path
