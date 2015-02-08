@@ -1,5 +1,4 @@
 class TicketsController < ApplicationController
-
   def index
     @tickets = Ticket.where(params.permit(:account_id, :service_id))
   end

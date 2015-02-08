@@ -12,4 +12,4 @@
     <tr><td><strong>notes</strong></td><td><%= @record.notes %></td></tr>
 </table>
 
-<%= link_to 'Back to records', records_path %> | <%= link_to 'Edit', edit_record_path(@record) %> | <%= link_to 'Destroy', record_path(@record), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', :back %> | <%= link_to 'Edit', edit_record_path(@record) %> | <%= link_to 'Destroy', record_path(@record), method: :delete, data: { confirm: 'Are you sure?' } %>
