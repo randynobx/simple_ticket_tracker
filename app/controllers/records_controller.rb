@@ -1,6 +1,6 @@
 class RecordsController < ApplicationController
   def index
-    @records = Record.all
+    @records = Record.where(params.permit(:account_id, :ticket_id, :settled))
   end
 
   def show
@@ -9,7 +9,7 @@ class RecordsController < ApplicationController
   end
 
   def new
-    @record = Record.new(params.permit(:ticket_id))
+    @record = Record.new(params.permit(:account_id, :ticket_id))
   end
 
   def create

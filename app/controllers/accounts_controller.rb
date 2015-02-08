@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   def index
-    @accounts = Account.all
+    @accounts = Account.where(params.permit(:category, :business, :city, :state, :zip))
   end
 
   def show

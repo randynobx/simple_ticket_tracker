@@ -1,7 +1,7 @@
 class Ticket < ActiveRecord::Base
   belongs_to :account
   belongs_to :service
-  belongs_to :record
+  has_many :records
 
   validates :id, presence: true, uniqueness: true
   validates :date, presence: true

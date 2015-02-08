@@ -1,8 +1,19 @@
 Rails.application.routes.draw do
 
-  resources :accounts
-  resources :services
-  resources :tickets
+  concern :ticketable do
+    resources :tickets, only: [:index, :new]
+  end
+
+  concern :recordable do
+    resources :records, only: [:index, :new]
+  end
+
+  resources :accounts, concerns: [:ticketable, :recordable]
+
+  resources :services, concerns: :ticketable
+
+  resources :tickets, concerns: :recordable
+
   resources :records
 
   get 'records/index'
