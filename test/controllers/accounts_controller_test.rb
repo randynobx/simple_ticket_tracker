@@ -63,6 +63,14 @@ class AccountsControllerTest < ActionController::TestCase
     assert_routing({ method: 'post', path: '/accounts' }, { controller: "accounts", action: "create" })
   end
 
+  test "should route to edit account" do
+    assert_routing({ method: 'patch', path: '/accounts/0' }, { controller: "accounts", action: "update", id: "0" })
+  end
+
+  test "should route to destroy account" do
+    assert_routing({ method: 'delete', path: '/accounts/0' }, { controller: "accounts", action: "destroy", id: "0" })
+  end
+
   ### Layout tests ###
 
   test "index should render correct layout" do

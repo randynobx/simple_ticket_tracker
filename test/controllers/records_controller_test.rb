@@ -63,6 +63,14 @@ class RecordsControllerTest < ActionController::TestCase
   	assert_routing({ method: 'post', path: '/records' }, { controller: "records", action: "create" })
   end
 
+  test "should route to edit record" do
+    assert_routing({ method: 'patch', path: '/records/0' }, { controller: "records", action: "update", id: "0" })
+  end
+
+  test "should route to destroy record" do
+    assert_routing({ method: 'delete', path: '/records/0' }, { controller: "records", action: "destroy", id: "0" })
+  end
+
   ### Layout tests ###
 
   test "index should render correct layout" do
