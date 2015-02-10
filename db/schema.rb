@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 20150206145329) do
     t.integer  "ticket_id"
     t.text     "notes"
     t.boolean  "settled"
-    t.decimal  "income"
-    t.decimal  "expense"
-    t.decimal  "total"
+    t.decimal  "income", :scale => 2
+    t.decimal  "expense", :scale => 2
+    t.decimal  "total", :scale => 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20150206145329) do
 
   create_table "services", force: :cascade do |t|
     t.string   "category"
-    t.decimal  "price"
+    t.decimal  "price", :scale => 2
     t.string   "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -57,9 +57,9 @@ ActiveRecord::Schema.define(version: 20150206145329) do
     t.integer  "account_id"
     t.integer  "service_id"
     t.text     "materialslist"
-    t.decimal  "materialscost"
-    t.decimal  "labor"
-    t.decimal  "total"
+    t.decimal  "materialscost", :scale => 2
+    t.decimal  "labor", :scale => 2
+    t.decimal  "total", :scale => 2
     t.boolean  "closed"
     t.text     "worklog"
     t.datetime "created_at",    null: false
