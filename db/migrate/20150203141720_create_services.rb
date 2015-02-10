@@ -3,7 +3,7 @@ class CreateServices < ActiveRecord::Migration
     create_table :services, { id: false } do |t|
       t.primary_key :id
       t.string :category
-      t.decimal :price
+      t.decimal :price, scale: 2
       t.string :rate
 
       t.timestamps null: false

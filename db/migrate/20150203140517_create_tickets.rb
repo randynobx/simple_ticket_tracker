@@ -6,9 +6,9 @@ class CreateTickets < ActiveRecord::Migration
       t.references :account, index: true
       t.references :service, index: true
       t.text :materialslist
-      t.decimal :materialscost
-      t.decimal :labor
-      t.decimal :total
+      t.decimal :materialscost, scale: 2
+      t.decimal :labor, scale: 2
+      t.decimal :total, scale: 2
       t.boolean :closed
       t.text :worklog
 

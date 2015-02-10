@@ -7,9 +7,9 @@ class CreateRecords < ActiveRecord::Migration
       t.references :ticket, index: true
       t.text :notes
       t.boolean :settled
-      t.decimal :income
-      t.decimal :expense
-      t.decimal :total
+      t.decimal :income, scale: 2
+      t.decimal :expense, scale: 2
+      t.decimal :total, scale: 2
 
       t.timestamps null: false
     end
