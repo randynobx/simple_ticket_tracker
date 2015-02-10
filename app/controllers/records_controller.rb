@@ -54,18 +54,6 @@ class RecordsController < ApplicationController
     end
   end
 
-  def destroy
-    begin
-      @record = Record.find(params[:id])
-    rescue ActiveRecord::RecordNotFound => e
-      raise("Record not found")
-    end
-    
-    @record.destroy!
-
-    redirect_to records_path
-  end
-
   private
     def record_params
       params.require(:record).permit(:id, :date, :account_id, :ticket_id, :income, :expense, :total, :settled, :notes)

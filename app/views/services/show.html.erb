@@ -8,4 +8,4 @@
     <tr><td><strong>tickets</strong></td><td><%= link_to Ticket.where(service_id: @service.id).count, service_tickets_path(@service.id) %></td></tr>
 </table>
 
-<%= link_to 'Up to Services', service_path %> | <%= link_to 'Edit', edit_service_path(@service) %> | <%= link_to 'Destroy', service_path(@service), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Up to Services', service_path %> | <%= link_to 'Edit', edit_service_path(@service) %>

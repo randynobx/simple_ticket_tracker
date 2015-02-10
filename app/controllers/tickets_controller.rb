@@ -61,17 +61,6 @@ class TicketsController < ApplicationController
     end
   end
 
-  def destroy
-    begin
-      @ticket = Ticket.find(params[:id])
-    rescue ActiveRecord::RecordNotFound => e
-      raise("Ticket not found")
-    end
-    @ticket.destroy!
-
-    redirect_to tickets_path
-  end
-
   private
     def ticket_params
       params.require(:ticket).permit(:id, :date, :account_id, :service_id, :materialslist, :materialscost, :labor, :total, :closed, :worklog)

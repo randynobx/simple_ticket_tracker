@@ -2,18 +2,16 @@
 <div>
     <h3>Finances</h3>
     <table>
-        <tr><td>Gross Income:</td><td><%= number_to_currency(Record.sum(:income)) %></td></tr>
-        <tr><td>Expenses:</td><td><%= number_to_currency(Record.sum(:expense)) %></td></tr>
-        <tr><td>Outstanding balance:</td><td><%= number_to_currency(Record.where(settled: false).sum(:total)) %></td></tr>
-        <tr><td>Total balance:</td><td><%= number_to_currency(Record.sum(:total)) %></td></tr>
+        <tr><td>Gross Income:</td><td><%= number_to_currency(@total_income) %></td></tr>
+        <tr><td>Expenses:</td><td><%= number_to_currency(@total_expense) %></td></tr>
+        <tr><td>Outstanding balance:</td><td><%= number_to_currency(@unsettled_net) %></td></tr>
+        <tr><td>Total balance:</td><td><%= number_to_currency(@total_net) %></td></tr>
     </table>
 </div>
 
 <div>
     <h3>Accounts</h3>
     <table>
-        <% @top_ticket = Account.find_by(id: Ticket.group(:account_id).count.max{|a, b| a.last <=> b.last}.first) %>
-        <% @top_revenue = Account.find_by(id: Record.group(:account_id).sum(:total).max.first) %>
         <tr><td>Top Client (Tickets):</td><td><%= link_to @top_ticket.name, account_path(@top_ticket.id) %></td></tr>
         <tr><td>Top Client (Revenue:</td><td><%= link_to @top_revenue.name, account_path(@top_revenue.id) %></td></tr>
     </table>
@@ -24,9 +22,9 @@
 <div>
     <h3>Unsettled records</h3>
     <table>
-      <tr><td>Total outstanding balance (income):</td><td><%= number_to_currency(Record.where(settled: false).sum(:income)) %></td></tr>
-      <tr><td>Total outstanding balance (expense):</td><td><%= number_to_currency(Record.where(settled: false).sum(:expense)) %></td></tr>
-      <tr><td>Net outstanding balance:</td><td><%= number_to_currency(Record.where(settled:false).sum(:total)) %></td></tr>
+      <tr><td>Total outstanding balance (income):</td><td><%= number_to_currency(@unsettled_income) %></td></tr>
+      <tr><td>Total outstanding balance (expense):</td><td><%= number_to_currency(@unsettled_expense) %></td></tr>
+      <tr><td>Net outstanding balance:</td><td><%= number_to_currency(@unsettled_net) %></td></tr>
     </table>
 
     <table>

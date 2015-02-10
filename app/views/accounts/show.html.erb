@@ -9,8 +9,8 @@
     <tr><td><strong>email</strong></td><td><%= @account.email %></td></tr>
     <tr><td><strong>address</strong></td><td><%= @account.address %><br><%= @account.city + ", " + @account.state.upcase + " " + @account.zip unless @account.city.nil? || @account.state.nil? || @account.zip.nil? %></td></tr>
     <tr><td><strong>notes</strong></td><td><%= @account.notes %></td></tr>
-    <tr><td><strong>tickets</strong></td><td><%= link_to Ticket.where(account_id: @account.id).count, account_tickets_path(@account) %></td></tr>
-    <tr><td><strong>income</strong></td><td><%= number_to_currency(Ticket.where(account_id: @account.id).sum(:labor)) %></td></tr>
+    <tr><td><strong>tickets</strong></td><td><%= link_to @ticket_count, account_tickets_path(@account) %></td></tr>
+    <tr><td><strong>income</strong></td><td><%= number_to_currency(@ticket_income) %></td></tr>
 </table>
 
-<%= link_to 'Up to Accounts', accounts_path %> | <%= link_to 'Edit', edit_account_path(@account) %> | <%= link_to 'Destroy', account_path(@account), method: :delete, data: { confirm: 'All tickets associated with this account will also be deleted. Are you sure you want to delete this account?' } %>
+<%= link_to 'Up to Accounts', accounts_path %> | <%= link_to 'Edit', edit_account_path(@account) %>

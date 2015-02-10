@@ -47,18 +47,6 @@ class ServicesController < ApplicationController
     end
   end
 
-  def destroy
-    begin
-      @service = Service.find(params[:id])
-    rescue ActiveRecord::RecordNotFound => e
-      raise("Service not found")
-    end
-    
-    @service.destroy!
-
-    redirect_to services_path
-  end
-
   private
     def service_params
       params.require(:service).permit(:id, :category, :price, :rate)

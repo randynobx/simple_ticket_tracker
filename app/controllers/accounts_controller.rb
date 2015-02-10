@@ -9,6 +9,9 @@ class AccountsController < ApplicationController
       rescue ActiveRecord::RecordNotFound => e
         raise("Account not found.")
       end
+
+      @ticket_count = Ticket.where(account_id: @account.id).count
+      @ticket_income = Ticket.where(account_id: @account.id).sum(:labor)
   end
 
   def new
@@ -49,21 +52,6 @@ class AccountsController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  def destroy
-    begin
-      @account = Account.find(params[:id])
-    rescue ActiveRecord::RecordNotFound => e
-      raise("Account not found.")
-    end
-    
-    Ticket.where(account_id: @account.id).each do |t|
-      t.destroy!
-    end
-    @account.destroy!
-
-    redirect_to accounts_path
   end
 
   private
