@@ -20,7 +20,7 @@
 <%end%>
 
 <table>
-    <tr><td><%= f.label :id%></td><td><%= f.label :id %></td></tr>
+    <tr><td><%= f.label :id%></td><td><%= f.text_field :id, :readonly => true %></td></tr>
     <tr><td><%= f.label :category%></td><td><%= f.select :category, options_for_select([['Client', 'Client'], ['Vendor', 'Vendor']]) %></td></tr>
     <tr><td><%= f.label :name%></td><td><%= f.text_field :name%></td></tr>
     <tr><td><%= f.label :business%></td><td><%= f.text_field :business%></td></tr>

@@ -13,16 +13,16 @@ class TicketsController < ApplicationController
     begin
       @account = Account.find(@ticket.account_id)
     rescue ActiveRecord::RecordNotFound => e
-      raise("The account linked to this ticket was not found")
+      raise("The account linked to this ticket was not found. Ticket may be corrupted.")
     end
 
     begin
       @service = Service.find(@ticket.service_id)
     rescue ActiveRecord::RecordNotFound => e
-      raise("The service linked to this ticket was not found")
+      raise("The service linked to this ticket was not found. Ticket may be corrupted.")
     end
 
-    @records = Record.find_by(ticket_id: @ticket.id)
+    @records = Record.where(ticket_id: @ticket.id)
   end
 
   def new

@@ -45,14 +45,6 @@ class TicketsControllerTest < ActionController::TestCase
   	assert_template
   end
 
-  test "should destroy ticket" do
-  	assert_difference('Ticket.count', -1) do
-      delete :destroy, id: @ticket.id
-  	end
- 
-  	assert_redirected_to tickets_path
-  end
-
   ### Routing tests ###
 
   test "should route to ticket" do
@@ -67,22 +59,18 @@ class TicketsControllerTest < ActionController::TestCase
     assert_routing({ method: 'patch', path: '/tickets/0' }, { controller: "tickets", action: "update", id: "0" })
   end
 
-  test "should route to destroy ticket" do
-    assert_routing({ method: 'delete', path: '/tickets/0' }, { controller: "tickets", action: "destroy", id: "0" })
-  end
-
   ### Layout tests ###
 
   test "index should render correct layout" do
   	get :index
   	assert_template :index
-  	assert_template layout: "layouts/application"
+  	assert_template layout: "layouts/application", partial: "_listing"
   end
 
   test "show should render correct layout" do
   	get :show, id: @ticket.id
   	assert_template :show, locals: { id: @ticket.id }
-  	assert_template layout: "layouts/application"
+  	assert_template layout: "layouts/application", partial: "records/_listing"
   end
 
   test "new should render correct layout" do
@@ -105,10 +93,6 @@ class TicketsControllerTest < ActionController::TestCase
 
   test "edit should throw not found exception" do
     assert_raises(RuntimeError) { get :edit, id: 999 }
-  end
-
-  test "destroy should throw not found exception" do
-    assert_raises(RuntimeError) { delete :destroy, id: 999 }
   end
 
   private

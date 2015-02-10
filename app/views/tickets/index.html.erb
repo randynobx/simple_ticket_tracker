@@ -2,35 +2,4 @@
 
 <%= link_to 'New ticket', new_ticket_path(params.permit(:account_id, :service_id)) %>
 
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Date</th>
-    <th>Account</th>
-    <th>Service</th>
-    <th>Materials Cost</th>
-    <th>Labor</th>
-    <th>Total</th>
-    <th>Closed</th>
-    <th>Records</th>
-    <th>Show</th>
-    <th>Edit</th>
-  </tr>
-
-  <% @tickets.each do |ticket| %>
-    <tr>
-      <td><%= ticket.id %></td>
-      <td><%= ticket.date %></td>
-      <td><%= link_to Account.find(ticket.account_id).name, account_path(Account.find(ticket.account_id)) %></td>
-      <td><%= link_to Service.find(ticket.service_id).category, service_path(Service.find(ticket.service_id)) %></td>
-      <td><%= number_to_currency(ticket.materialscost) %></td>
-      <td><%= number_to_currency(ticket.labor) %></td>
-      <td><%= number_to_currency(ticket.total) %></td>
-      <td><%= ticket.closed %></td>
-      <td><%= Record.where(ticket_id: ticket.id).count == 0 ? (link_to 'Add', new_ticket_record_path(ticket.id)) : Record.where(ticket_id: ticket.id).count %></td>
-      <td><%= link_to 'Show', ticket_path(ticket) %></td>
-      <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
-    </tr>
-    </tr>
-  <% end %>
-</table>
+<%= render 'listing' %>

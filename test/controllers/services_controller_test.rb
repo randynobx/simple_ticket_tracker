@@ -45,14 +45,6 @@ class ServicesControllerTest < ActionController::TestCase
   	assert_template
   end
 
-  test "should destroy service" do
-  	assert_difference('Service.count', -1) do
-      delete :destroy, id: @service.id
-  	end
- 
-  	assert_redirected_to services_path
-  end
-
   ### Routing tests ###
 
   test "should route to service" do
@@ -65,10 +57,6 @@ class ServicesControllerTest < ActionController::TestCase
 
   test "should route to edit service" do
     assert_routing({ method: 'patch', path: '/services/0' }, { controller: "services", action: "update", id: "0" })
-  end
-
-  test "should route to destroy service" do
-    assert_routing({ method: 'delete', path: '/services/0' }, { controller: "services", action: "destroy", id: "0" })
   end
 
   ### Layout tests ###
@@ -105,10 +93,6 @@ class ServicesControllerTest < ActionController::TestCase
 
   test "edit should throw not found exception" do
     assert_raises(RuntimeError) { get :edit, id: 999 }
-  end
-
-  test "destroy should throw not found exception" do
-    assert_raises(RuntimeError) { delete :destroy, id: 999 }
   end
 
   private

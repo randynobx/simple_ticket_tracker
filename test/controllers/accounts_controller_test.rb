@@ -45,14 +45,6 @@ class AccountsControllerTest < ActionController::TestCase
   	assert_template
   end
 
-  test "should destroy account" do
-  	assert_difference('Account.count', -1) do
-      delete :destroy, id: @account.id
-  	end
- 
-  	assert_redirected_to accounts_path
-  end
-
   ### Routing tests ###
 
   test "should route to account" do
@@ -65,10 +57,6 @@ class AccountsControllerTest < ActionController::TestCase
 
   test "should route to edit account" do
     assert_routing({ method: 'patch', path: '/accounts/0' }, { controller: "accounts", action: "update", id: "0" })
-  end
-
-  test "should route to destroy account" do
-    assert_routing({ method: 'delete', path: '/accounts/0' }, { controller: "accounts", action: "destroy", id: "0" })
   end
 
   ### Layout tests ###
@@ -105,10 +93,6 @@ class AccountsControllerTest < ActionController::TestCase
 
   test "edit should throw not found exception" do
     assert_raises(RuntimeError) { get :edit, id: 999 }
-  end
-
-  test "destroy should throw not found exception" do
-    assert_raises(RuntimeError) { delete :destroy, id: 999 }
   end
 
   private

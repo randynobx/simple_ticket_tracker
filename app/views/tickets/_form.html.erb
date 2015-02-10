@@ -20,7 +20,7 @@
 <%end%>
 
 <table>
-    <tr><td><%= f.label :id%></td><td><%= f.label :id %></td></tr>
+    <tr><td><%= f.label :id%></td><td><%= f.text_field :id, :readonly => true %></td></tr>
     <tr><td><%= f.label :date%></td><td><%= f.date_select :date %></td></tr>
     <tr><td><%= f.label :account_id%></td><td><%= f.collection_select(:account_id, Account.all.where(category: 'Client'), :id, :name, :prompt => "Select Account") %></td></tr>
     <tr><td><%= f.label :service_id%></td><td><%= f.collection_select(:service_id, Service.all, :id, :category, :prompt => "Select Service") %></td></tr>

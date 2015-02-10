@@ -1,0 +1,35 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Date</th>
+    <th>Account</th>
+    <th>Service</th>
+    <th>Materials Cost</th>
+    <th>Labor</th>
+    <th>Total</th>
+    <th>Closed</th>
+    <th>Records</th>
+    <th>Show</th>
+    <th>Edit</th>
+  </tr>
+
+  <% @tickets.each do |ticket| %>
+    <% @account = Account.find(ticket.account_id) rescue raise("Account associated with record #{record.id} not found") %>
+    <% @service = Service.find(ticket.service_id) rescue raise("Service associated with record #{record.id} not found") %>
+    <% @records = Record.where(ticket_id: ticket.id) %>
+    <tr>
+      <td><%= ticket.id %></td>
+      <td><%= ticket.date %></td>
+      <td><%= link_to @account.name, account_path(@account) %></td>
+      <td><%= link_to @service.category, service_path(@service) %></td>
+      <td><%= number_to_currency(ticket.materialscost) %></td>
+      <td><%= number_to_currency(ticket.labor) %></td>
+      <td><%= number_to_currency(ticket.total) %></td>
+      <td><%= ticket.closed %></td>
+      <td><%= @records.count == 0 ? (link_to 'Add', new_ticket_record_path(ticket.id)) : @records.count %></td>
+      <td><%= link_to 'Show', ticket_path(ticket) %></td>
+      <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
+    </tr>
+    </tr>
+  <% end %>
+</table>

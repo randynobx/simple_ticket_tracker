@@ -45,14 +45,6 @@ class RecordsControllerTest < ActionController::TestCase
   	assert_template
   end
 
-  test "should destroy record" do
-  	assert_difference('Record.count', -1) do
-      delete :destroy, id: @record.id
-  	end
- 
-  	assert_redirected_to records_path
-  end
-
   ### Routing tests ###
 
   test "should route to record" do
@@ -67,16 +59,12 @@ class RecordsControllerTest < ActionController::TestCase
     assert_routing({ method: 'patch', path: '/records/0' }, { controller: "records", action: "update", id: "0" })
   end
 
-  test "should route to destroy record" do
-    assert_routing({ method: 'delete', path: '/records/0' }, { controller: "records", action: "destroy", id: "0" })
-  end
-
   ### Layout tests ###
 
   test "index should render correct layout" do
   	get :index
   	assert_template :index
-  	assert_template layout: "layouts/application"
+  	assert_template layout: "layouts/application", partial: "_listing"
   end
 
   test "show should render correct layout" do
@@ -105,10 +93,6 @@ class RecordsControllerTest < ActionController::TestCase
 
   test "edit should throw not found exception" do
     assert_raises(RuntimeError) { get :edit, id: 999 }
-  end
-
-  test "destroy should throw not found exception" do
-    assert_raises(RuntimeError) { delete :destroy, id: 999 }
   end
 
   private
