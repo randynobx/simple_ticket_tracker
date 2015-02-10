@@ -4,9 +4,24 @@ class TicketsController < ApplicationController
   end
 
   def show
-    @ticket = Ticket.find(params[:id])
-    @account = Account.find(@ticket.account_id)
-    @service = Service.find(@ticket.service_id)
+    begin
+      @ticket = Ticket.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      raise("Ticket not found")  
+    end
+    
+    begin
+      @account = Account.find(@ticket.account_id)
+    rescue ActiveRecord::RecordNotFound => e
+      raise("The account linked to this ticket was not found")
+    end
+
+    begin
+      @service = Service.find(@ticket.service_id)
+    rescue ActiveRecord::RecordNotFound => e
+      raise("The service linked to this ticket was not found")
+    end
+
     @records = Record.find_by(ticket_id: @ticket.id)
   end
 
@@ -17,7 +32,7 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(ticket_params)
 
-    if @ticket.save
+    if @ticket.save!
       redirect_to @ticket
     else
       render 'new'
@@ -25,13 +40,21 @@ class TicketsController < ApplicationController
   end
 
   def edit
-    @ticket = Ticket.find(params[:id])
+    begin
+      @ticket = Ticket.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      raise("Ticket not found")
+    end
   end
 
   def update
-    @ticket = Ticket.find(params[:id])
+    begin
+      @ticket = Ticket.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      raise("Ticket not found")
+    end
 
-    if @ticket.update(ticket_params)
+    if @ticket.update!(ticket_params)
       redirect_to @ticket
     else
       render 'edit'
@@ -39,8 +62,12 @@ class TicketsController < ApplicationController
   end
 
   def destroy
-    @ticket = Ticket.find(params[:id])
-    @ticket.destroy
+    begin
+      @ticket = Ticket.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      raise("Ticket not found")
+    end
+    @ticket.destroy!
 
     redirect_to tickets_path
   end

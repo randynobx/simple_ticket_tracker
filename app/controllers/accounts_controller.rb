@@ -4,7 +4,11 @@ class AccountsController < ApplicationController
   end
 
   def show
-    @account = Account.find(params[:id])
+      begin
+        @account = Account.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => e
+        raise("Account not found.")
+      end
   end
 
   def new
@@ -12,9 +16,13 @@ class AccountsController < ApplicationController
   end
 
   def create
-    @account = Account.new(account_params)
+    begin
+      @account = Account.new(account_params)
+    rescue ActiveRecord::RecordNotFound => e
+      raise("Account not found.")
+    end
     
-    if @account.save
+    if @account.save!
       redirect_to @account
     else
       render 'new'
@@ -22,13 +30,21 @@ class AccountsController < ApplicationController
   end
 
   def edit
-    @account = Account.find(params[:id])
+    begin
+      @account = Account.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      raise("Account not found.")
+    end
   end
 
   def update
-    @account = Account.find(params[:id])
+    begin
+      @account = Account.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      raise("Account not found.")
+    end
 
-    if @account.update(account_params)
+    if @account.update!(account_params)
       redirect_to @account
     else
       render 'edit'
@@ -36,11 +52,16 @@ class AccountsController < ApplicationController
   end
 
   def destroy
-    @account = Account.find(params[:id])
-    Ticket.where(account_id: @account.id).each do |t|
-      t.destroy
+    begin
+      @account = Account.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      raise("Account not found.")
     end
-    @account.destroy
+    
+    Ticket.where(account_id: @account.id).each do |t|
+      t.destroy!
+    end
+    @account.destroy!
 
     redirect_to accounts_path
   end

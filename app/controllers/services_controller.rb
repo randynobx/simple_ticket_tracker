@@ -4,7 +4,11 @@ class ServicesController < ApplicationController
   end
 
   def show
-    @service = Service.find(params[:id])
+    begin
+      @service = Service.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      raise("Service not found")
+    end
   end
 
   def new
@@ -14,7 +18,7 @@ class ServicesController < ApplicationController
   def create
     @service = Service.new(service_params)
     
-    if @service.save
+    if @service.save!
       redirect_to @service
     else
       render 'new'
@@ -22,13 +26,21 @@ class ServicesController < ApplicationController
   end
 
   def edit
-    @service = Service.find(params[:id])
+    begin
+      @service = Service.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      raise("Service not found")
+    end
   end
 
   def update
-    @service = Service.find(params[:id])
+    begin
+      @service = Service.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      raise("Service not found")
+    end
 
-    if @service.update(service_params)
+    if @service.update!(service_params)
       redirect_to @service
     else
       render 'edit'
@@ -36,8 +48,13 @@ class ServicesController < ApplicationController
   end
 
   def destroy
-    @service = Service.find(params[:id])
-    @service.destroy
+    begin
+      @service = Service.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      raise("Service not found")
+    end
+    
+    @service.destroy!
 
     redirect_to services_path
   end

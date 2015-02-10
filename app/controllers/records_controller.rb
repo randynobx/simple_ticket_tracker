@@ -4,8 +4,18 @@ class RecordsController < ApplicationController
   end
 
   def show
-    @record = Record.find(params[:id])
-    @account = Account.find(@record.account_id)
+    begin
+      @record = Record.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      raise("Record not found")
+    end
+
+    begin
+      @account = Account.find(@record.account_id)
+    rescue ActiveRecord::RecordNotFound => e
+      raise("Account not found")
+      
+    end
   end
 
   def new
@@ -15,7 +25,7 @@ class RecordsController < ApplicationController
   def create
   	@record = Record.new(record_params)
     
-    if @record.save
+    if @record.save!
       redirect_to @record
     else
       render 'new'
@@ -23,13 +33,21 @@ class RecordsController < ApplicationController
   end
 
   def edit
-    @record = Record.find(params[:id])
+    begin
+      @record = Record.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      raise("Record not found")
+    end
   end
 
   def update
-    @record = Record.find(params[:id])
+    begin
+      @record = Record.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      raise("Record not found")
+    end
 
-    if @record.update(record_params)
+    if @record.update!(record_params)
       redirect_to @record
     else
       render 'edit'
@@ -37,8 +55,13 @@ class RecordsController < ApplicationController
   end
 
   def destroy
-    @record = Record.find(params[:id])
-    @record.destroy
+    begin
+      @record = Record.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      raise("Record not found")
+    end
+    
+    @record.destroy!
 
     redirect_to records_path
   end
