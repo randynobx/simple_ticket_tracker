@@ -6,9 +6,9 @@ class Account < ActiveRecord::Base
 	validates :category, presence: true
 	validates :name, presence: true,
                 length: { minimum: 3 }
-  validates :notes, length: { maximum: 1000,
+  validates :notes, length: { maximum: 144,
     			too_long: "%{count} characters is the maximum allowed" }
-  validates :address, length: { maximum: 20,
+  validates :address, length: { maximum: 30,
           too_long: "%{count} characters is the maximum allowed" }
   validates :city, length: { maximum: 20,
           too_long: "%{count} characters is the maximum allowed" }
