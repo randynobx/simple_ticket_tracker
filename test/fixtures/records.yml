@@ -1,23 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 
-  date: 2015-02-03
-  account_id: 
-  ticket_id: 
-  notes: MyText
-  settled: MyString
-  income: 9.99
-  expense: 9.99
-  balance: 9.99
+  id: 0
+  date: 2015-01-27
+  account_id: 0
+  ticket_id: 0
+  notes:
+  settled: true
+  income: 60.00
+  expense: 0.00
+  total: 60.00
 
 two:
-  id: 
-  date: 2015-02-03
-  account_id: 
-  ticket_id: 
-  notes: MyText
-  settled: MyString
-  income: 9.99
-  expense: 9.99
-  balance: 9.99
+  id: 1
+  date: 2015-02-02
+  account_id: 2
+  ticket_id: 1
+  notes: parts
+  settled: false
+  income: 0
+  expense: 140.49
+  total: -140.49

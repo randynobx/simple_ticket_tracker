@@ -1,21 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  id: 
-  category: MyString
-  name: MyString
-  business: MyString
-  phone: MyString
-  email: MyString
-  address: MyString
-  notes: MyText
+Client1:
+  id: 0
+  category: Client
+  name: John Doe
+  business: Retail Inc.
+  phone: (555) 555-5555
+  email: john@retailinc.com
+  address: 123 Basic Street
+  city: Anytown
+  state: ST
+  zip: 55555
+  notes: My first customer.
 
-two:
-  id: 
-  category: MyString
-  name: MyString
-  business: MyString
-  phone: MyString
-  email: MyString
-  address: MyString
-  notes: MyText
+Vendor1:
+  id: 2
+  category: Vendor
+  name: Parts Supplier Inc
+  business:
+  phone: 
+  email: 
+  address:
+  city:
+  state:
+  zip:
+  notes: 

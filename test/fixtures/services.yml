@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  id: 
-  category: MyString
-  price: 9.99
-  rate: MyString
+service1:
+  id: 0
+  category: Test Service 1
+  price: 50.00
+  rate: Hourly
 
-two:
-  id: 
-  category: MyString
-  price: 9.99
-  rate: MyString
+service2:
+  id: 1
+  category: Test Service 2
+  price: 60.00
+  rate: Flat

@@ -1,25 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 
-  date: 2015-02-03
-  account_id: 
-  service_id: 
-  materialslist: MyText
-  materialscost: 9.99
-  labor: 9.99
-  total: 9.99
-  paid: false
-  worklog: MyText
-
-two:
-  id: 
-  date: 2015-02-03
-  account_id: 
-  service_id: 
-  materialslist: MyText
-  materialscost: 9.99
-  labor: 9.99
-  total: 9.99
-  paid: false
-  worklog: MyText
+  id: 0
+  date: 2015-01-27
+  account_id: 0
+  service_id: 0
+  materialslist: 
+  materialscost: 0.00
+  labor: 60.00
+  total: 60.00
+  closed: true
+  worklog: Basic consulting work.
