@@ -20,7 +20,7 @@
 <%end%>
 
     <table>
-        <tr><td><%= f.label :id%></td><td><%= f.text_field :id %></td></tr>
+        <tr><td><%= f.label :id%></td><td><%= f.label :id %></td></tr>
         <tr><td><%= f.label :date%></td><td><%= f.date_select :date %></td></tr>
         <tr><td><%= f.label :account_id%></td><td><%= f.collection_select(:account_id, Account.all, :id, :name, :prompt => "Select Account") %></td></tr>
         <tr><td><%= f.label :ticket_id%></td><td><%= f.collection_select(:ticket_id, Ticket.all, :id, :id, :prompt => "Select Ticket") %></td></tr>
